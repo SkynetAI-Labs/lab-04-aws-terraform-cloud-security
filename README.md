@@ -1,4 +1,4 @@
-# AWS Infrastructure as Code & Cloud Security
+# Lab 4 — AWS Infrastructure as Code & Cloud Security
 
 **Organisation:** SkynetAI-Labs  
 **Project:** DevSecOps Lab 4  
