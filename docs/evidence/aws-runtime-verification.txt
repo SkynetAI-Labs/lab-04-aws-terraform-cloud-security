@@ -1,0 +1,112 @@
+=== skynetai-labs-secure-3eb72c2d ===
+{
+    "LocationConstraint": "eu-north-1"
+}
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
+{
+    "ServerSideEncryptionConfiguration": {
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
+                },
+                "BucketKeyEnabled": false,
+                "BlockedEncryptionTypes": {
+                    "EncryptionType": [
+                        "SSE-C"
+                    ]
+                }
+            }
+        ]
+    }
+}
+{
+    "Status": "Enabled"
+}
+{
+    "TransitionDefaultMinimumObjectSize": "all_storage_classes_128K",
+    "Rules": [
+        {
+            "ID": "abort-incomplete-multipart-uploads",
+            "Filter": {
+                "Prefix": ""
+            },
+            "Status": "Enabled",
+            "AbortIncompleteMultipartUpload": {
+                "DaysAfterInitiation": 7
+            }
+        }
+    ]
+}
+{
+    "LoggingEnabled": {
+        "TargetBucket": "skynetai-labs-logs-3eb72c2d",
+        "TargetPrefix": "access-logs/"
+    }
+}
+{
+    "EventBridgeConfiguration": {}
+}
+=== skynetai-labs-logs-3eb72c2d ===
+{
+    "LocationConstraint": "eu-north-1"
+}
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
+{
+    "ServerSideEncryptionConfiguration": {
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
+                },
+                "BucketKeyEnabled": false,
+                "BlockedEncryptionTypes": {
+                    "EncryptionType": [
+                        "SSE-C"
+                    ]
+                }
+            }
+        ]
+    }
+}
+{
+    "Status": "Enabled"
+}
+{
+    "TransitionDefaultMinimumObjectSize": "all_storage_classes_128K",
+    "Rules": [
+        {
+            "Expiration": {
+                "Days": 30
+            },
+            "ID": "expire-access-logs",
+            "Filter": {
+                "Prefix": ""
+            },
+            "Status": "Enabled",
+            "NoncurrentVersionExpiration": {
+                "NoncurrentDays": 7
+            },
+            "AbortIncompleteMultipartUpload": {
+                "DaysAfterInitiation": 7
+            }
+        }
+    ]
+}
+{
+    "EventBridgeConfiguration": {}
+}

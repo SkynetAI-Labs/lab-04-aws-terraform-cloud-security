@@ -1,0 +1,24 @@
+random_id.bucket_suffix: Refreshing state... [id=PrcsLQ]
+data.aws_caller_identity.current: Reading...
+aws_s3_bucket.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+data.aws_caller_identity.current: Read complete after 0s [id=264524063713]
+aws_s3_bucket_notification.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_public_access_block.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_versioning.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_lifecycle_configuration.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_public_access_block.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_notification.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_versioning.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_lifecycle_configuration.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+data.aws_iam_policy_document.access_logs: Reading...
+data.aws_iam_policy_document.access_logs: Read complete after 0s [id=3993956769]
+aws_s3_bucket_policy.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_logging.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

@@ -1,0 +1,436 @@
+random_id.bucket_suffix: Refreshing state... [id=PrcsLQ]
+data.aws_caller_identity.current: Reading...
+aws_s3_bucket.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+data.aws_caller_identity.current: Read complete after 0s [id=264524063713]
+aws_s3_bucket_notification.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_versioning.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_public_access_block.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_lifecycle_configuration.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_public_access_block.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_versioning.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+data.aws_iam_policy_document.access_logs: Reading...
+aws_s3_bucket_lifecycle_configuration.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+data.aws_iam_policy_document.access_logs: Read complete after 0s [id=3993956769]
+aws_s3_bucket_notification.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_policy.access_logs: Refreshing state... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_logging.secure_lab: Refreshing state... [id=skynetai-labs-secure-3eb72c2d]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_s3_bucket.access_logs will be destroyed
+  - resource "aws_s3_bucket" "access_logs" {
+      - arn                         = "arn:aws:s3:::skynetai-labs-logs-3eb72c2d" -> null
+      - bucket                      = "skynetai-labs-logs-3eb72c2d" -> null
+      - bucket_domain_name          = "skynetai-labs-logs-3eb72c2d.s3.amazonaws.com" -> null
+      - bucket_namespace            = "global" -> null
+      - bucket_region               = "eu-north-1" -> null
+      - bucket_regional_domain_name = "skynetai-labs-logs-3eb72c2d.s3.eu-north-1.amazonaws.com" -> null
+      - force_destroy               = false -> null
+      - hosted_zone_id              = "Z3BAZG2TWCNX0D" -> null
+      - id                          = "skynetai-labs-logs-3eb72c2d" -> null
+      - object_lock_enabled         = false -> null
+      - policy                      = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:PutObject"
+                      - Condition = {
+                          - ArnLike      = {
+                              - "aws:SourceArn" = "arn:aws:s3:::skynetai-labs-secure-3eb72c2d"
+                            }
+                          - StringEquals = {
+                              - "aws:SourceAccount" = "264524063713"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "logging.s3.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::skynetai-labs-logs-3eb72c2d/access-logs/*"
+                      - Sid       = "AllowS3ServerAccessLogs"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - region                      = "eu-north-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {
+          - "Name"    = "SkynetAI-Labs-Access-Logs"
+          - "Purpose" = "DevSecOps-Lab4-Audit"
+        } -> null
+      - tags_all                    = {
+          - "Environment" = "Lab"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "SkynetAI-Labs-Access-Logs"
+          - "Project"     = "SkynetAI-Labs-DevSecOps-Lab4"
+          - "Purpose"     = "DevSecOps-Lab4-Audit"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - grant {
+          - id          = "75a316c5d37c133e247df026cab59c295b0b259649c19af94d5aecaebb4686e9" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - lifecycle_rule {
+          - abort_incomplete_multipart_upload_days = 7 -> null
+          - enabled                                = true -> null
+          - id                                     = "expire-access-logs" -> null
+          - tags                                   = {} -> null
+            # (1 unchanged attribute hidden)
+
+          - expiration {
+              - days                         = 30 -> null
+              - expired_object_delete_marker = false -> null
+                # (1 unchanged attribute hidden)
+            }
+
+          - noncurrent_version_expiration {
+              - days = 7 -> null
+            }
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket.secure_lab will be destroyed
+  - resource "aws_s3_bucket" "secure_lab" {
+      - arn                         = "arn:aws:s3:::skynetai-labs-secure-3eb72c2d" -> null
+      - bucket                      = "skynetai-labs-secure-3eb72c2d" -> null
+      - bucket_domain_name          = "skynetai-labs-secure-3eb72c2d.s3.amazonaws.com" -> null
+      - bucket_namespace            = "global" -> null
+      - bucket_region               = "eu-north-1" -> null
+      - bucket_regional_domain_name = "skynetai-labs-secure-3eb72c2d.s3.eu-north-1.amazonaws.com" -> null
+      - force_destroy               = false -> null
+      - hosted_zone_id              = "Z3BAZG2TWCNX0D" -> null
+      - id                          = "skynetai-labs-secure-3eb72c2d" -> null
+      - object_lock_enabled         = false -> null
+      - region                      = "eu-north-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {
+          - "Name"    = "SkynetAI-Labs-Secure-Storage"
+          - "Purpose" = "DevSecOps-Lab4"
+        } -> null
+      - tags_all                    = {
+          - "Environment" = "Lab"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "SkynetAI-Labs-Secure-Storage"
+          - "Project"     = "SkynetAI-Labs-DevSecOps-Lab4"
+          - "Purpose"     = "DevSecOps-Lab4"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - grant {
+          - id          = "75a316c5d37c133e247df026cab59c295b0b259649c19af94d5aecaebb4686e9" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - lifecycle_rule {
+          - abort_incomplete_multipart_upload_days = 7 -> null
+          - enabled                                = true -> null
+          - id                                     = "abort-incomplete-multipart-uploads" -> null
+          - tags                                   = {} -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - logging {
+          - target_bucket = "skynetai-labs-logs-3eb72c2d" -> null
+          - target_prefix = "access-logs/" -> null
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket_lifecycle_configuration.access_logs will be destroyed
+  - resource "aws_s3_bucket_lifecycle_configuration" "access_logs" {
+      - bucket                                 = "skynetai-labs-logs-3eb72c2d" -> null
+      - id                                     = "skynetai-labs-logs-3eb72c2d" -> null
+      - region                                 = "eu-north-1" -> null
+      - transition_default_minimum_object_size = "all_storage_classes_128K" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - id     = "expire-access-logs" -> null
+          - status = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+
+          - abort_incomplete_multipart_upload {
+              - days_after_initiation = 7 -> null
+            }
+
+          - expiration {
+              - days                         = 30 -> null
+              - expired_object_delete_marker = false -> null
+            }
+
+          - filter {
+                # (1 unchanged attribute hidden)
+            }
+
+          - noncurrent_version_expiration {
+              - noncurrent_days = 7 -> null
+            }
+        }
+    }
+
+  # aws_s3_bucket_lifecycle_configuration.secure_lab will be destroyed
+  - resource "aws_s3_bucket_lifecycle_configuration" "secure_lab" {
+      - bucket                                 = "skynetai-labs-secure-3eb72c2d" -> null
+      - id                                     = "skynetai-labs-secure-3eb72c2d" -> null
+      - region                                 = "eu-north-1" -> null
+      - transition_default_minimum_object_size = "all_storage_classes_128K" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - id     = "abort-incomplete-multipart-uploads" -> null
+          - status = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+
+          - abort_incomplete_multipart_upload {
+              - days_after_initiation = 7 -> null
+            }
+
+          - filter {
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_logging.secure_lab will be destroyed
+  - resource "aws_s3_bucket_logging" "secure_lab" {
+      - bucket                = "skynetai-labs-secure-3eb72c2d" -> null
+      - id                    = "skynetai-labs-secure-3eb72c2d" -> null
+      - region                = "eu-north-1" -> null
+      - target_bucket         = "skynetai-labs-logs-3eb72c2d" -> null
+      - target_prefix         = "access-logs/" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_s3_bucket_notification.access_logs will be destroyed
+  - resource "aws_s3_bucket_notification" "access_logs" {
+      - bucket      = "skynetai-labs-logs-3eb72c2d" -> null
+      - eventbridge = true -> null
+      - id          = "skynetai-labs-logs-3eb72c2d" -> null
+      - region      = "eu-north-1" -> null
+    }
+
+  # aws_s3_bucket_notification.secure_lab will be destroyed
+  - resource "aws_s3_bucket_notification" "secure_lab" {
+      - bucket      = "skynetai-labs-secure-3eb72c2d" -> null
+      - eventbridge = true -> null
+      - id          = "skynetai-labs-secure-3eb72c2d" -> null
+      - region      = "eu-north-1" -> null
+    }
+
+  # aws_s3_bucket_policy.access_logs will be destroyed
+  - resource "aws_s3_bucket_policy" "access_logs" {
+      - bucket = "skynetai-labs-logs-3eb72c2d" -> null
+      - id     = "skynetai-labs-logs-3eb72c2d" -> null
+      - policy = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:PutObject"
+                      - Condition = {
+                          - ArnLike      = {
+                              - "aws:SourceArn" = "arn:aws:s3:::skynetai-labs-secure-3eb72c2d"
+                            }
+                          - StringEquals = {
+                              - "aws:SourceAccount" = "264524063713"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "logging.s3.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::skynetai-labs-logs-3eb72c2d/access-logs/*"
+                      - Sid       = "AllowS3ServerAccessLogs"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - region = "eu-north-1" -> null
+    }
+
+  # aws_s3_bucket_public_access_block.access_logs will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "access_logs" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "skynetai-labs-logs-3eb72c2d" -> null
+      - id                      = "skynetai-labs-logs-3eb72c2d" -> null
+      - ignore_public_acls      = true -> null
+      - region                  = "eu-north-1" -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_public_access_block.secure_lab will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "secure_lab" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "skynetai-labs-secure-3eb72c2d" -> null
+      - id                      = "skynetai-labs-secure-3eb72c2d" -> null
+      - ignore_public_acls      = true -> null
+      - region                  = "eu-north-1" -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.access_logs will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "access_logs" {
+      - bucket                = "skynetai-labs-logs-3eb72c2d" -> null
+      - id                    = "skynetai-labs-logs-3eb72c2d" -> null
+      - region                = "eu-north-1" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - blocked_encryption_types = [
+              - "SSE-C",
+            ] -> null
+          - bucket_key_enabled       = false -> null
+
+          - apply_server_side_encryption_by_default {
+              - sse_algorithm     = "AES256" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.secure_lab will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "secure_lab" {
+      - bucket                = "skynetai-labs-secure-3eb72c2d" -> null
+      - id                    = "skynetai-labs-secure-3eb72c2d" -> null
+      - region                = "eu-north-1" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - blocked_encryption_types = [
+              - "SSE-C",
+            ] -> null
+          - bucket_key_enabled       = false -> null
+
+          - apply_server_side_encryption_by_default {
+              - sse_algorithm     = "AES256" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.access_logs will be destroyed
+  - resource "aws_s3_bucket_versioning" "access_logs" {
+      - bucket                = "skynetai-labs-logs-3eb72c2d" -> null
+      - id                    = "skynetai-labs-logs-3eb72c2d" -> null
+      - region                = "eu-north-1" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - mfa_delete = "Disabled" -> null
+          - status     = "Enabled" -> null
+        }
+    }
+
+  # aws_s3_bucket_versioning.secure_lab will be destroyed
+  - resource "aws_s3_bucket_versioning" "secure_lab" {
+      - bucket                = "skynetai-labs-secure-3eb72c2d" -> null
+      - id                    = "skynetai-labs-secure-3eb72c2d" -> null
+      - region                = "eu-north-1" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - mfa_delete = "Disabled" -> null
+          - status     = "Enabled" -> null
+        }
+    }
+
+  # random_id.bucket_suffix will be destroyed
+  - resource "random_id" "bucket_suffix" {
+      - b64_std     = "PrcsLQ==" -> null
+      - b64_url     = "PrcsLQ" -> null
+      - byte_length = 4 -> null
+      - dec         = "1052191789" -> null
+      - hex         = "3eb72c2d" -> null
+      - id          = "PrcsLQ" -> null
+    }
+
+Plan: 0 to add, 0 to change, 15 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: 
+aws_s3_bucket_versioning.secure_lab: Destroying... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_public_access_block.secure_lab: Destroying... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.secure_lab: Destroying... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_public_access_block.access_logs: Destroying... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_versioning.access_logs: Destroying... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_notification.secure_lab: Destroying... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_notification.access_logs: Destroying... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_logging.secure_lab: Destroying... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_lifecycle_configuration.secure_lab: Destroying... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.access_logs: Destroying... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_logging.secure_lab: Destruction complete after 0s
+aws_s3_bucket_lifecycle_configuration.access_logs: Destroying... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_public_access_block.access_logs: Destruction complete after 0s
+aws_s3_bucket_policy.access_logs: Destroying... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.access_logs: Destruction complete after 1s
+aws_s3_bucket_versioning.secure_lab: Destruction complete after 1s
+aws_s3_bucket_notification.secure_lab: Destruction complete after 1s
+aws_s3_bucket_versioning.access_logs: Destruction complete after 1s
+aws_s3_bucket_policy.access_logs: Destruction complete after 1s
+aws_s3_bucket_public_access_block.secure_lab: Destruction complete after 1s
+aws_s3_bucket_lifecycle_configuration.secure_lab: Destruction complete after 1s
+aws_s3_bucket_lifecycle_configuration.access_logs: Destruction complete after 1s
+aws_s3_bucket_notification.access_logs: Destruction complete after 2s
+aws_s3_bucket.access_logs: Destroying... [id=skynetai-labs-logs-3eb72c2d]
+aws_s3_bucket_server_side_encryption_configuration.secure_lab: Destruction complete after 2s
+aws_s3_bucket.secure_lab: Destroying... [id=skynetai-labs-secure-3eb72c2d]
+aws_s3_bucket.secure_lab: Destruction complete after 0s
+aws_s3_bucket.access_logs: Destruction complete after 0s
+random_id.bucket_suffix: Destroying... [id=PrcsLQ]
+random_id.bucket_suffix: Destruction complete after 0s
+
+Destroy complete! Resources: 15 destroyed.

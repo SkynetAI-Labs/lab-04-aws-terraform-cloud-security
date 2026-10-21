@@ -10,7 +10,7 @@ This project demonstrates the design and security assessment of AWS infrastructu
 
 The lab focuses on secure S3 storage, access logging, event notifications, automated security scanning, remediation and risk management.
 
-**Deployment Status:** Not deployed to AWS. All validation has been performed locally.
+**Deployment Status:** Deployed in eu-north-1, verified using AWS APIs, then destroyed after testing.
 
 ## Architecture
 
@@ -40,7 +40,7 @@ The Terraform configuration defines:
 | Event notifications | Amazon EventBridge |
 | Security scanning | Checkov |
 
-These controls are defined in Terraform and have not yet been verified in a deployed AWS environment.
+AWS API checks verified the deployed configuration. Log delivery and EventBridge event delivery were not tested.
 
 ## Security Assessment
 
@@ -99,9 +99,8 @@ These commands validate and scan the infrastructure configuration without deploy
 
 ## Deployment Status
 
-The infrastructure has not been deployed to AWS.
 
-Cloud deployment, runtime verification and teardown testing remain future project stages.
+Terraform created 15 resources in eu-north-1. AWS API checks verified the configuration, the post-deployment plan showed no changes, and all 15 resources were destroyed.
 
 ## Skills Demonstrated
 
@@ -118,3 +117,13 @@ Cloud deployment, runtime verification and teardown testing remain future projec
 ---
 
 **SkynetAI-Labs | DevSecOps Engineering Portfolio**
+
+## AWS Deployment Evidence
+
+- [AWS configuration checks](docs/evidence/aws-runtime-verification.txt)
+- [No-drift plan](docs/evidence/terraform-post-deploy-plan.txt)
+- [Successful teardown](docs/evidence/terraform-destroy.txt)
+
+### Budget email verification
+
+The separate $1 monthly budget remains. Email alerts are inactive because verification is blocked by the managed notifications-contacts restriction. An AWS Support case is pending.
