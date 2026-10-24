@@ -3,8 +3,8 @@
 Project: AWS Infrastructure as Code & Cloud Security
 Organisation: SkynetAI-Labs
 Assessment date: 20 October 2026
-Environment: Local Terraform configuration
-Deployment status: Not deployed
+Environment: Terraform configuration and temporary AWS deployment
+Deployment status: Subsequently deployed in eu-north-1, verified using AWS APIs, and destroyed after testing. All 15 Terraform-managed resources were removed.
 
 ## Security Scan Results
 
