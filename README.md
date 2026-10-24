@@ -26,7 +26,7 @@ The Terraform configuration defines:
 - Public access blocking on both buckets
 - AES-256 server-side encryption
 - S3 object versioning
-- Lifecycle management and automated cleanup
+- Access-log expiration and incomplete multipart-upload cleanup
 - S3 server access logging
 - Amazon EventBridge event notifications
 - Checkov infrastructure security scanning
@@ -39,7 +39,7 @@ The Terraform configuration defines:
 | Encryption | SSE-S3 AES-256 |
 | Versioning | Enabled on both buckets |
 | Access logging | Dedicated S3 logging bucket |
-| Log expiration | 30 days |
+| Current access-log expiration | 30 days; primary data objects have no age-based expiration |
 | Previous log versions | 7-day expiration |
 | Incomplete uploads | 7-day cleanup |
 | Event notifications | Amazon EventBridge |
@@ -49,7 +49,7 @@ AWS API checks verified the deployed configuration. Log delivery and EventBridge
 
 ## Security Assessment
 
-**Tool:** Checkov 3.3.30
+**Historical scan tool:** Checkov 3.3.30. The retained result below was not rerun during the 24 October repository audit.
 
 | Result | Checks |
 |---|---:|
@@ -69,17 +69,17 @@ Cross-region replication is not configured because this is a non-production lear
 
 The remaining findings are documented as proposed risk-based exceptions rather than hidden or suppressed.
 
-See Security Risk Assessment.
+See the [Security Risk Assessment](docs/SECURITY_RISK_ASSESSMENT.md).
 
 ## Security Evidence
 
 The following reports document the security assessment and remediation process:
 
-- Baseline Scan
-- Lifecycle Configuration Scan
-- Access Logging Scan
-- Lifecycle Remediation Scan
-- Event Notification Scan
+- [Baseline scan](docs/evidence/checkov-baseline.txt)
+- [Lifecycle configuration scan](docs/evidence/checkov-after-lifecycle.txt)
+- [Access logging scan](docs/evidence/checkov-after-logging.txt)
+- [Lifecycle remediation scan](docs/evidence/checkov-after-lifecycle-remediation.txt)
+- [Event notification scan](docs/evidence/checkov-after-event-notifications.txt)
 
 ## Project Structure
 
@@ -122,14 +122,20 @@ Terraform created 15 resources in `eu-north-1`. AWS API checks verified the conf
 
 ## AWS Deployment Evidence
 
-- AWS configuration checks
-- No-drift plan
-- Successful teardown
+- [AWS configuration checks](docs/evidence/aws-runtime-verification.txt)
+- [No-drift plan](docs/evidence/terraform-post-deploy-plan.txt)
+- [Successful teardown](docs/evidence/terraform-destroy.txt)
 
 ## Budget Email Verification
 
-The separate $1 monthly budget remains. Email alerts are inactive because verification is blocked by the managed `notifications-contacts` restriction. An AWS Support case is pending.
+The prior account check recorded a separate $1 monthly budget with inactive email alerts, a managed `notifications-contacts` restriction and an AWS Support case. The current account and case status were not independently rechecked during this repository audit.
 
 ---
 
 **SkynetAI-Labs | DevSecOps Engineering Portfolio**
+
+
+## Repository audit — 24 October 2026
+
+See the [dated security audit and prioritised recommendations](SECURITY_AUDIT.md) for the reviewed source commit, verification results, open findings and evidence limitations.
+
